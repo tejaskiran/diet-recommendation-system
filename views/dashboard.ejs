@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">D</div>
+                DietBuddy
+            </a>
+            <div class="link_container">
+                <a href="#" class="link">
+                    Home
+                </a>
+                <a href="/bookmarks/<%= locals.uid %>" class="link">
+                    Bookmarks
+                </a>
+            </div>
+            <div class="user-info">
+                <span class="username" onclick="toggleDropdown()"><%= locals.user_data.username %></span>
+                <div class="dropdown-menu" id="user-dropdown">
+                    <p>Email: <%= locals.user_data.email %></p>
+                    <a href="/signout" class="sign-out">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ingredients-section">
+            <div class="available-ingredients">
+                <div class="header-section">
+                    <h2>Ingredients</h2>
+                    <button class="collapse-btn" id="collapseBtn" onclick="toggleCollapse()">
+                        <span class="icon">▼</span>
+                        Collapse
+                    </button>
+                </div>
+                <input type="text" class="search-box" placeholder="Search ingredients..." onkeyup="filterIngredients()">
+                <ul class="ingredient-list" id="availableList">
+                    <!-- Ingredients will be populated by JavaScript -->
+                </ul>
+                <button class="show-more-btn" id="showMoreBtn" onclick="showMoreIngredients()">Show More Ingredients</button>
+            </div>
+
+            <div class="selected-ingredients">
+                <h2>Selected Ingredients</h2>
+                <ul class="ingredient-list" id="selectedList">
+                    <!-- Selected ingredients will appear here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <button onclick="showUploadPopup()" class="upload-btn">Get Ingregients From Image</button>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p>Upload image to recognise ingredients</p>
+            <button class="popup-btn" onclick="uploadImage()">Upload Image</button>
+            <button class="popup-btn popup-btn-close" onclick="closeUploadPopup()">Close</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="allergies-section">
+            <div class="available-allergies">
+                <div class="header-section">
+                    <h2>Allergies</h2>
+                    <button class="collapse-btn" id="collapseBtnAllergies" onclick="toggleCollapseAllergies()">
+                        <span class="icon">▼</span>
+                        Collapse
+                    </button>
+                </div>
+                <input type="text" class="search-box-allergies" placeholder="Search Allergies..." onkeyup="filterAllergies()">
+                <ul class="allergy-list" id="availableListAllergies">
+                </ul>
+                <button class="show-more-btn" id="showMoreBtnAllergies" onclick="showMoreAllergies()">Show More Allergies</button>
+            </div>
+
+            <div class="selected-allergies">
+                <h2>Selected Allergies</h2>
+                <ul class="allergy-list" id="selectedListAllergies">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="cuisines-section">
+            <div class="available-cuisines">
+                <div class="header-section">
+                    <h2>Cuisines</h2>
+                    <button class="collapse-btn" id="collapseBtnCuisines" onclick="toggleCollapseCuisines()">
+                        <span class="icon">▼</span>
+                        Collapse
+                    </button>
+                </div>
+                <input type="text" class="search-box-cuisines" placeholder="Search Cuisines..." onkeyup="filterCuisines()">
+                <ul class="cuisine-list" id="availableListCuisines">
+
+                </ul>
+                <button class="show-more-btn" id="showMoreBtnCuisines" onclick="showMoreCuisines()">Show More Cuisines</button>
+            </div>
+
+            <div class="selected-cuisines">
+                <h2>Selected Cuisines</h2>
+                <ul class="cuisine-list" id="selectedListCuisines">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button onclick="generateRecipe()" class="generate-btn">Generate Recipe +</button>
+    </div>
+    <div class="recipe-container" id="recipeContainer"></div>
+    
+    <script >
+        
+        const user_id = "<%= locals.user_data.uid %>"
+    </script>
+    <script src="/scripts/dashboard.js"></script>
+</body>
+</html>

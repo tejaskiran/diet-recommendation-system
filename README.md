@@ -46,3 +46,12 @@ This application demonstrates the integration of **machine learning models with 
 ---
 
 ## 📂 Project Structure
+
+diet-recommendation-system
+│
+├── dataset
+├── models
+├── templates
+├── static
+├── app.py
+└── requirements.txt
